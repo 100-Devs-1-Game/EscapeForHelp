@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcrrrggbybyr0"]
+
+[ext_resource type="Script" uid="uid://cfbysw5w0fuaw" path="res://camera/camera_point.gd" id="1_wqudl"]
+
+[node name="Camera Point" type="Node3D" node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999994, 0, -0.49999994, 0.8660253, 0, 0, 0)
+script = ExtResource("1_wqudl")
+follow_target = NodePath("")
+
+[node name="Camera Length" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Length"]

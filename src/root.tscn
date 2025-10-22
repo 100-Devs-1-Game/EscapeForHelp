@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgajjb1qtceqd"]
+
+[ext_resource type="PackedScene" uid="uid://r2ekh1fn5pk4" path="res://hero/hero.tscn" id="1_pq8q7"]
+[ext_resource type="PackedScene" uid="uid://bcrrrggbybyr0" path="res://camera/camera_point.tscn" id="2_pyidc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vvh5c"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_28aoi"]
+sky_material = SubResource("ProceduralSkyMaterial_vvh5c")
+
+[sub_resource type="Environment" id="Environment_jnlp7"]
+background_mode = 2
+sky = SubResource("Sky_28aoi")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvh5c"]
+
+[node name="Root" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jnlp7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Hero" parent="." instance=ExtResource("1_pq8q7")]
+
+[node name="Camera Point" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_pyidc")]
+transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.49999994, 0, -0.49999994, 0.86602527, 0, 0, -1)
+follow_target = NodePath("../Hero")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
