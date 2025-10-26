@@ -56,7 +56,7 @@ mesh = SubResource("BoxMesh_vvh5c")
 
 [node name="ExperienceGem" parent="." instance=ExtResource("4_wtggm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2855043, 1.1920929e-07, -0.53865385)
-experience = 7000
+experience = 4000
 
 [node name="ExperienceGem2" parent="." instance=ExtResource("4_wtggm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.432457, 1.1920929e-07, -0.53865385)
