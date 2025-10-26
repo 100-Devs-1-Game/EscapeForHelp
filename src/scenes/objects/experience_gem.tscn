@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://hki6gwvixnp0"]
+
+[ext_resource type="Script" uid="uid://bmujse07jxdun" path="res://scenes/objects/experience_gem.gd" id="1_d4pmo"]
+[ext_resource type="AudioStream" uid="uid://cve7ltkuw10h5" path="res://assets/external/sfx/new-notification-08-352461.mp3" id="2_fvjf3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6mpq1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4kml"]
+albedo_color = Color(0.08949263, 0.44056082, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8xicw"]
+radius = 2.451529
+
+[node name="ExperienceGem" type="Area3D" groups=["loot"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_d4pmo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6mpq1")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4kml")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8xicw")
+
+[node name="SndCollected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fvjf3")
+
+[connection signal="finished" from="SndCollected" to="." method="_on_sound_collected_finished"]

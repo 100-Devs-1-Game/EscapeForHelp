@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6wsfqjqopkip"]
+
+[ext_resource type="PackedScene" uid="uid://bybf72esorfg6" path="res://scenes/ui/game_screen.tscn" id="1_xq7xy"]
+[ext_resource type="PackedScene" uid="uid://dg83guknsau34" path="res://hero/hero_w_upgrade.tscn" id="2_e8ym1"]
+[ext_resource type="PackedScene" uid="uid://bcrrrggbybyr0" path="res://camera/camera_point.tscn" id="3_pikm8"]
+[ext_resource type="PackedScene" uid="uid://hki6gwvixnp0" path="res://scenes/objects/experience_gem.tscn" id="4_wtggm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vvh5c"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_28aoi"]
+sky_material = SubResource("ProceduralSkyMaterial_vvh5c")
+
+[sub_resource type="Environment" id="Environment_jnlp7"]
+background_mode = 2
+sky = SubResource("Sky_28aoi")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvh5c"]
+
+[node name="Root" type="Node"]
+
+[node name="game_screen" parent="." instance=ExtResource("1_xq7xy")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jnlp7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Hero" parent="." instance=ExtResource("2_e8ym1")]
+
+[node name="Camera Point" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("3_pikm8")]
+transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.49999994, 0, -0.49999994, 0.86602527, 0, 0, -1)
+follow_target = NodePath("../Hero")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+mesh = SubResource("BoxMesh_vvh5c")
+
+[node name="ExperienceGem" parent="." instance=ExtResource("4_wtggm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2855043, 1.1920929e-07, -0.53865385)
+experience = 10000
+
+[node name="ExperienceGem2" parent="." instance=ExtResource("4_wtggm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.432457, 1.1920929e-07, -0.53865385)
+experience = 10
+
+[node name="ExperienceGem3" parent="." instance=ExtResource("4_wtggm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.518759, 1.1920929e-07, -0.53865385)
+experience = 15
+
+[editable path="game_screen"]

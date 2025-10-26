@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterDataStats" load_steps=2 format=3 uid="uid://c18lgoi2itnqp"]
+
+[ext_resource type="Script" uid="uid://od14j0yamsgg" path="res://scripts/player/character_data_stats.gd" id="1_utrj2"]
+
+[resource]
+script = ExtResource("1_utrj2")
+health = 100.0
+weapon_damage = 1.0
+tackle_damage = 5.0
+critical_chance = 0.05
+critical_power = 1.5
+attack_speed = 1.0
+movement_speed = 1.0
+pickup_radius = 1.0
+experience_multiplier = 1.0
+luck = 1.0
+metadata/_custom_type_script = "uid://od14j0yamsgg"

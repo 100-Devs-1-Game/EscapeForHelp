@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PassiveData" load_steps=6 format=3 uid="uid://cj3y0ylyx788x"]
+
+[ext_resource type="Script" uid="uid://bd8g1nmhbprxh" path="res://scripts/passive_items/passive_modifier.gd" id="1_xyr03"]
+[ext_resource type="Script" uid="uid://4q2f33adsb8j" path="res://scripts/passive_items/fusion/item_fusion_recipe.gd" id="2_xyr03"]
+[ext_resource type="Texture2D" uid="uid://clckrrakhitt" path="res://assets/items_temp/0_food.png" id="3_32sue"]
+[ext_resource type="Script" uid="uid://o20ohspsio10" path="res://scripts/passive_items/passive_data.gd" id="4_s2dc3"]
+
+[sub_resource type="Resource" id="Resource_j3hc7"]
+script = ExtResource("1_xyr03")
+name = "Food"
+description = "Heals the player by 20HP"
+level = "1"
+metadata/_custom_type_script = "uid://bd8g1nmhbprxh"
+
+[resource]
+script = ExtResource("4_s2dc3")
+base_stats = SubResource("Resource_j3hc7")
+icon = ExtResource("3_32sue")
+metadata/_custom_type_script = "uid://o20ohspsio10"

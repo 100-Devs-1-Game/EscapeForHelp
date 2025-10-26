@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbty33cfmxrl2"]
+
+[ext_resource type="Script" uid="uid://daadk6fcj6yg3" path="res://scenes/ui/item_container.gd" id="2_xcevu"]
+
+[node name="ItemContainer" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 22.0
+offset_bottom = 22.0
+script = ExtResource("2_xcevu")
+
+[node name="PanelRemoveLater" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 131.0
+scale = Vector2(0.2, 0.2)
