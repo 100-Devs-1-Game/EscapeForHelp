@@ -4,7 +4,7 @@ extends Node
 @export var passives: Node
 @export var upgrade_manager: UpgradeManager
 
-var item_container_scene: PackedScene = preload("res://scenes/ui/item_container.tscn")
+var item_container_scene: PackedScene = preload("uid://cbty33cfmxrl2")
 
 # Constants for consumable items
 const FOOD_CATEGORY: String = "Food"

@@ -7,7 +7,7 @@ signal upgrade_selected
 
 var upgrade_options: Array[ItemOption] = []
 
-var item_options: PackedScene = preload("res://scenes/utility/item_option.tscn")
+var item_options: PackedScene = preload("uid://co84ocwm1cr62")
 
 @export var food_resource: ItemData
 
