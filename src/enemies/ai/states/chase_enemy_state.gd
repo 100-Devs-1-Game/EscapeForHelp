@@ -11,10 +11,6 @@ func enter() -> void:
 	target = Global.player
 	
 func process(delta: float) -> void:
-	if not agent.is_target_reachable():
-		state_machine.switch_to(idle)
-		return
-	
 	agent.target_position = target.global_position
 	var point := agent.get_next_path_position()
 	var movement := point - body.global_position

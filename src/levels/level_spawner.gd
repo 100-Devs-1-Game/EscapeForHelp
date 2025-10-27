@@ -20,6 +20,9 @@ func _physics_process(_delta: float) -> void:
 	var distance := hero.global_position.z - next_part_position.z
 	if distance < level_resource.spawn_distance:
 		remove_first_part()
+		## IDK why, but it's fix bug with navigation areas
+		## TODO: research this trouble
+		await get_tree().process_frame
 		create_next_part()
 
 func create_next_part() -> void:
@@ -27,9 +30,9 @@ func create_next_part() -> void:
 	var location: LocationPart = random_part.instantiate() as LocationPart
 	parts.add_child(location)
 	location.global_position = next_part_position
-	next_part_position = location.end_of_location.global_position + Vector3.FORWARD
+	next_part_position = location.end_of_location.global_position
 	spawned_parts.push_back(location)
 
 func remove_first_part() -> void:
-	var part = spawned_parts.pop_front()
+	var part: LocationPart = spawned_parts.pop_front()
 	part.queue_free()

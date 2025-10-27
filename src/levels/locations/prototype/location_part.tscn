@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1ysyejj266nc"]
+[gd_scene load_steps=9 format=3 uid="uid://c1ysyejj266nc"]
 
 [ext_resource type="Script" uid="uid://72ddk2kvkr2x" path="res://levels/location_part.gd" id="1_xpi3g"]
 [ext_resource type="PackedScene" uid="uid://cq4oiw15fc40t" path="res://levels/locations/prototype/obstacles/protoype_box.tscn" id="2_hjomg"]
 [ext_resource type="PackedScene" uid="uid://hki6gwvixnp0" path="res://scenes/objects/experience_gem.tscn" id="3_l10et"]
+[ext_resource type="PackedScene" uid="uid://c5xrq3lh66wmo" path="res://enemies/zombie/zombie.tscn" id="4_ufydi"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kpj5x"]
 plane = Plane(1, 0, 0, 0)
@@ -13,6 +14,7 @@ plane = Plane(-1, 0, 0, 0)
 [sub_resource type="PlaneMesh" id="PlaneMesh_28aoi"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_phtw6"]
+resource_local_to_scene = true
 vertices = PackedVector3Array(2.5, 0.5, -5.5, 1.25, 0.5, -5.5, 1.25, 0.5, -4.25, 2.5, 0.5, -3, -0.75, 0.5, -2.75, 1, 0.5, -2.75, 0.75, 0.5, -3.75, -1.75, 0.5, -3.75, -2.5, 0.5, -3, -0.75, 0.5, -1.25, 1, 0.5, -0.5, -2.5, 0.5, -0.5, -2, 0.5, -5.5, -2.5, 0.5, -5.5)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(8, 7, 4), PackedInt32Array(4, 7, 6), PackedInt32Array(4, 6, 5), PackedInt32Array(6, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(4, 5, 9), PackedInt32Array(9, 5, 10), PackedInt32Array(10, 11, 9), PackedInt32Array(12, 7, 13), PackedInt32Array(13, 7, 8)]
 
@@ -71,8 +73,8 @@ mesh = SubResource("PlaneMesh_28aoi")
 skeleton = NodePath("../..")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+unique_name_in_owner = true
 navigation_mesh = SubResource("NavigationMesh_phtw6")
-use_edge_connections = false
 
 [node name="Roads" type="Node3D" parent="NavigationRegion3D"]
 
@@ -145,3 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1650295, 0.68852663, -3.70
 
 [node name="ExperienceGem2" parent="Drops" instance=ExtResource("3_l10et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9281111, 1.602514, -1.6704385)
+
+[node name="Zombie" parent="." instance=ExtResource("4_ufydi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.707624)
