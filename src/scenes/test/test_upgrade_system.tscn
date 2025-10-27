@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6wsfqjqopkip"]
 
 [ext_resource type="PackedScene" uid="uid://bybf72esorfg6" path="res://scenes/ui/game_screen.tscn" id="1_xq7xy"]
-[ext_resource type="PackedScene" uid="uid://dg83guknsau34" path="res://hero/hero_w_upgrade.tscn" id="2_e8ym1"]
+[ext_resource type="PackedScene" uid="uid://dg83guknsau34" path="res://hero/hero.tscn" id="2_e8ym1"]
 [ext_resource type="PackedScene" uid="uid://bcrrrggbybyr0" path="res://camera/camera_point.tscn" id="3_pikm8"]
 [ext_resource type="PackedScene" uid="uid://hki6gwvixnp0" path="res://scenes/objects/experience_gem.tscn" id="4_wtggm"]
 

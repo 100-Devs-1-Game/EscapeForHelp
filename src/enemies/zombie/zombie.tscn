@@ -26,9 +26,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_usb1q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_r1owf")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-unique_name_in_owner = true
 
 [node name="Player Observer" type="Area3D" parent="."]
 
@@ -38,13 +38,16 @@ debug_color = Color(0.97467774, 0, 0.42848563, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_bwstf")
-initial_state = NodePath("IdleEnemyState")
+initial_state = NodePath("ChaseEnemyState")
 metadata/_custom_type_script = "uid://cewylhkdhrfgb"
 
 [node name="IdleEnemyState" type="Node" parent="StateMachine"]
 script = ExtResource("3_20vm6")
 metadata/_custom_type_script = "uid://tow66amum1kd"
 
-[node name="ChaseEnemyState" type="Node" parent="StateMachine"]
+[node name="ChaseEnemyState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "body", "agent")]
 script = ExtResource("4_y7vlx")
+idle = NodePath("../IdleEnemyState")
+body = NodePath("../..")
+agent = NodePath("../../NavigationAgent3D")
 metadata/_custom_type_script = "uid://rt8wpno2nxrv"

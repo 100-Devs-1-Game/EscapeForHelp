@@ -33,6 +33,7 @@ metadata/_custom_type_script = "uid://51okejqfv4x4"
 [node name="Hero" type="CharacterBody3D" node_paths=PackedStringArray("player_stats", "player_inventory") groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_pgpv3")
+movement_speed = 5.0
 player_stats = NodePath("PlayerStats")
 player_inventory = NodePath("PlayerInventory")
 

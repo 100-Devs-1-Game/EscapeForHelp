@@ -27,7 +27,7 @@ func create_next_part() -> void:
 	var location: LocationPart = random_part.instantiate() as LocationPart
 	parts.add_child(location)
 	location.global_position = next_part_position
-	next_part_position = location.end_of_location.global_position
+	next_part_position = location.end_of_location.global_position + Vector3.FORWARD
 	spawned_parts.push_back(location)
 
 func remove_first_part() -> void:

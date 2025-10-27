@@ -48,6 +48,10 @@ click={
 
 3d_physics/layer_5="Loot"
 
+[navigation]
+
+3d/merge_rasterizer_cell_scale=0.001
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
