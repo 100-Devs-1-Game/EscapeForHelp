@@ -1,7 +1,7 @@
 class_name LevelSpawner
 extends Node3D
 
-@export var hero: Hero
+@export var hero: Node3D
 @export var level_resource: LevelResource
 @export var spawned_parts: Array[LocationPart]
 
