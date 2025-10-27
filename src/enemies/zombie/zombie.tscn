@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5xrq3lh66wmo"]
+
+[ext_resource type="Script" uid="uid://cgb21boywrwlj" path="res://enemies/zombie/zombie.gd" id="1_usb1q"]
+[ext_resource type="Script" uid="uid://cewylhkdhrfgb" path="res://common/states/state_machine.gd" id="2_bwstf"]
+[ext_resource type="Script" uid="uid://tow66amum1kd" path="res://enemies/ai/states/idle_enemy_state.gd" id="3_20vm6"]
+[ext_resource type="Script" uid="uid://rt8wpno2nxrv" path="res://enemies/ai/states/chase_enemy_state.gd" id="4_y7vlx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_swqmq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usb1q"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1owf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_usb1q"]
+radius = 4.0
+
+[node name="Zombie" type="CharacterBody3D"]
+script = ExtResource("1_usb1q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_swqmq")
+surface_material_override/0 = SubResource("StandardMaterial3D_usb1q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r1owf")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player Observer" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player Observer"]
+shape = SubResource("SphereShape3D_usb1q")
+debug_color = Color(0.97467774, 0, 0.42848563, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_bwstf")
+initial_state = NodePath("IdleEnemyState")
+metadata/_custom_type_script = "uid://cewylhkdhrfgb"
+
+[node name="IdleEnemyState" type="Node" parent="StateMachine"]
+script = ExtResource("3_20vm6")
+metadata/_custom_type_script = "uid://tow66amum1kd"
+
+[node name="ChaseEnemyState" type="Node" parent="StateMachine"]
+script = ExtResource("4_y7vlx")
+metadata/_custom_type_script = "uid://rt8wpno2nxrv"
