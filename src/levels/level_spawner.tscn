@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drvjh42i2baj7"]
+
+[ext_resource type="Script" uid="uid://dhyr8pnrwad57" path="res://levels/level_spawner.gd" id="1_we8bc"]
+[ext_resource type="Resource" uid="uid://mqnwoy16ar4a" path="res://levels/locations/prototype/default_level.tres" id="2_5vrru"]
+
+[node name="Level Spawner" type="Node3D"]
+script = ExtResource("1_we8bc")
+level_resource = ExtResource("2_5vrru")
+
+[node name="Parts" type="Node3D" parent="."]
+unique_name_in_owner = true

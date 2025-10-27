@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://r2ekh1fn5pk4" path="res://hero/hero.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://bcrrrggbybyr0" path="res://camera/camera_point.tscn" id="2_pyidc"]
+[ext_resource type="PackedScene" uid="uid://drvjh42i2baj7" path="res://levels/level_spawner.tscn" id="3_vvh5c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vvh5c"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,8 +16,6 @@ background_mode = 2
 sky = SubResource("Sky_28aoi")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_vvh5c"]
-
 [node name="Root" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -27,25 +26,11 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Hero" parent="." instance=ExtResource("1_pq8q7")]
+movement_speed = 4.0
 
 [node name="Camera Point" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_pyidc")]
-transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.49999994, 0, -0.49999994, 0.86602527, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 0.9396924, 0.34202003, 0, -0.34202003, 0.9396924, 0, 0, -1)
 follow_target = NodePath("../Hero")
 
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
-mesh = SubResource("BoxMesh_vvh5c")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
-mesh = SubResource("BoxMesh_vvh5c")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
-mesh = SubResource("BoxMesh_vvh5c")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
-mesh = SubResource("BoxMesh_vvh5c")
+[node name="Level Spawner" parent="." node_paths=PackedStringArray("hero") instance=ExtResource("3_vvh5c")]
+hero = NodePath("../Hero")

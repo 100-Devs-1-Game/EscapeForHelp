@@ -4,7 +4,8 @@ extends CharacterBody3D
 @export var movement_speed: float = 10
 
 func _process(_delta: float) -> void:
-	velocity.x = get_horizontal_movement()
+	velocity.x = get_horizontal_movement() * movement_speed
+	velocity.z = -movement_speed
 	move_and_slide()
 
 func get_horizontal_movement() -> float:

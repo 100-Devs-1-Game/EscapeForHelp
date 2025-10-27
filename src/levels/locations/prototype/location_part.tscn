@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ysyejj266nc"]
+
+[ext_resource type="Script" uid="uid://72ddk2kvkr2x" path="res://levels/location_part.gd" id="1_xpi3g"]
+[ext_resource type="PackedScene" uid="uid://cq4oiw15fc40t" path="res://levels/locations/prototype/obstacles/protoype_box.tscn" id="2_hjomg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_28aoi"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kpj5x"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ukiqp"]
+plane = Plane(-1, 0, 0, 0)
+
+[node name="Location Part" type="Node3D" node_paths=PackedStringArray("end_of_location")]
+script = ExtResource("1_xpi3g")
+end_of_location = NodePath("Location End")
+
+[node name="Location End" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Roads" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+mesh = SubResource("PlaneMesh_28aoi")
+skeleton = NodePath("../..")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Left Wall" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Left Wall"]
+shape = SubResource("WorldBoundaryShape3D_kpj5x")
+
+[node name="Right Wall" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Right Wall"]
+shape = SubResource("WorldBoundaryShape3D_ukiqp")
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Protoype Box" parent="Obstacles" instance=ExtResource("2_hjomg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.51052845, -2)
+
+[node name="Protoype Box2" parent="Obstacles" instance=ExtResource("2_hjomg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.51052845, -1)
+
+[node name="Protoype Box3" parent="Obstacles" instance=ExtResource("2_hjomg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.51052845, -2)
+
+[node name="Protoype Box4" parent="Obstacles" instance=ExtResource("2_hjomg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.51052845, -5)
+
+[node name="Protoype Box5" parent="Obstacles" instance=ExtResource("2_hjomg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51052845, -5)
