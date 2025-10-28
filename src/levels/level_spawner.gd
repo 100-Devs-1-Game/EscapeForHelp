@@ -10,20 +10,26 @@ extends Node3D
 var next_part_position: Vector3
 
 func _ready() -> void:
-	initialize()
-
-func initialize() -> void:
-	for i in range(3):
-		create_next_part()
+	for child in get_children():
+		if child is LocationPart:
+			spawned_parts.append(child)
+	
+	if spawned_parts.size() > 0:
+		next_part_position = spawned_parts.back().end_of_location.global_position
 
 func _physics_process(_delta: float) -> void:
 	var distance := hero.global_position.z - next_part_position.z
+	
 	if distance < level_resource.spawn_distance:
-		remove_first_part()
 		## IDK why, but it's fix bug with navigation areas
 		## TODO: research this trouble
 		await get_tree().process_frame
 		create_next_part()
+	
+	if spawned_parts.size() > 0:
+		var distance_from_previous := spawned_parts[0].position.z - hero.global_position.z
+		if distance_from_previous > level_resource.spawn_distance:
+			remove_first_part()
 
 func create_next_part() -> void:
 	var random_part: PackedScene = level_resource.locations.pick_random()
@@ -35,4 +41,6 @@ func create_next_part() -> void:
 
 func remove_first_part() -> void:
 	var part: LocationPart = spawned_parts.pop_front()
-	part.queue_free()
+	
+	if part:
+		part.queue_free()

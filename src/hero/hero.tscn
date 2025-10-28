@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg83guknsau34"]
+[gd_scene load_steps=22 format=3 uid="uid://dg83guknsau34"]
 
 [ext_resource type="Script" uid="uid://uy177ecutt1c" path="res://hero/hero.gd" id="1_pgpv3"]
 [ext_resource type="Script" uid="uid://dvsgx01aw44ka" path="res://scripts/player/player_stats.gd" id="2_eeu4s"]
@@ -21,6 +21,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pyidc"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxmd6"]
+shading_mode = 0
+albedo_color = Color(1.347661e-06, 0.5880864, 0.89600533, 1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_dpa0h"]
 radius = 2.0
 
@@ -31,9 +35,9 @@ stats = ExtResource("4_ule3g")
 metadata/_custom_type_script = "uid://51okejqfv4x4"
 
 [node name="Hero" type="CharacterBody3D" node_paths=PackedStringArray("player_stats", "player_inventory") groups=["player"]]
-collision_layer = 3
+collision_layer = 35
 script = ExtResource("1_pgpv3")
-movement_speed = 5.0
+movement_speed = 3.0
 player_stats = NodePath("PlayerStats")
 player_inventory = NodePath("PlayerInventory")
 
@@ -47,6 +51,7 @@ shape = SubResource("CapsuleShape3D_vho56")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_pyidc")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cxmd6")
 
 [node name="Grabber" type="Area3D" parent="."]
 collision_layer = 0

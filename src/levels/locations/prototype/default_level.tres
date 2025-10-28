@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_yvupp")
-spawn_distance = 10.0
+spawn_distance = 100.0
 locations = Array[PackedScene]([ExtResource("1_ffco5")])
 metadata/_custom_type_script = "uid://cjlm3bslepiis"

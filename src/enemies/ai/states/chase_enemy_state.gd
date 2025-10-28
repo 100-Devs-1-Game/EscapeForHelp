@@ -7,9 +7,6 @@ extends State
 
 var target: Player
 
-func enter() -> void:
-	target = Global.player
-	
 func process(delta: float) -> void:
 	agent.target_position = target.global_position
 	var point := agent.get_next_path_position()

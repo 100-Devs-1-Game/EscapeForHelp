@@ -8,19 +8,23 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_swqmq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usb1q"]
-albedo_color = Color(1, 0, 1, 1)
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1owf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_usb1q"]
-radius = 4.0
+radius = 14.0
 
 [node name="Zombie" type="CharacterBody3D"]
 script = ExtResource("1_usb1q")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_swqmq")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_usb1q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -31,6 +35,8 @@ disabled = true
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Player Observer" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player Observer"]
 shape = SubResource("SphereShape3D_usb1q")
@@ -38,11 +44,13 @@ debug_color = Color(0.97467774, 0, 0.42848563, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_bwstf")
-initial_state = NodePath("ChaseEnemyState")
+initial_state = NodePath("IdleEnemyState")
 metadata/_custom_type_script = "uid://cewylhkdhrfgb"
 
-[node name="IdleEnemyState" type="Node" parent="StateMachine"]
+[node name="IdleEnemyState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_observer", "chase_state")]
 script = ExtResource("3_20vm6")
+player_observer = NodePath("../../Player Observer")
+chase_state = NodePath("../ChaseEnemyState")
 metadata/_custom_type_script = "uid://tow66amum1kd"
 
 [node name="ChaseEnemyState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "body", "agent")]

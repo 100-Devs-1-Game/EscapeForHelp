@@ -1,21 +1,115 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgajjb1qtceqd"]
+[gd_scene load_steps=22 format=3 uid="uid://cgajjb1qtceqd"]
 
 [ext_resource type="PackedScene" uid="uid://dg83guknsau34" path="res://hero/hero.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://bcrrrggbybyr0" path="res://camera/camera_point.tscn" id="2_pyidc"]
 [ext_resource type="PackedScene" uid="uid://drvjh42i2baj7" path="res://levels/level_spawner.tscn" id="3_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://bybf72esorfg6" path="res://scenes/ui/game_screen.tscn" id="4_28aoi"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vvh5c"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_28aoi"]
-sky_material = SubResource("ProceduralSkyMaterial_vvh5c")
+[ext_resource type="Script" uid="uid://72ddk2kvkr2x" path="res://levels/location_part.gd" id="4_qwhpj"]
+[ext_resource type="PackedScene" uid="uid://dbr2lmrr4x24x" path="res://assets/prototype/road.glb" id="5_qt76e"]
+[ext_resource type="PackedScene" uid="uid://book50hs6o70a" path="res://assets/prototype/fence_01.glb" id="6_sq7yr"]
+[ext_resource type="PackedScene" uid="uid://cel78n1to0r45" path="res://assets/prototype/out_road_plates.glb" id="7_r3r3k"]
+[ext_resource type="PackedScene" uid="uid://bnu26vfltmvie" path="res://assets/prototype/house_01.glb" id="8_blcw0"]
+[ext_resource type="PackedScene" uid="uid://c71ugjool5ap4" path="res://assets/prototype/trash_01.glb" id="9_50g4q"]
+[ext_resource type="PackedScene" uid="uid://cccsfdp8ajebx" path="res://assets/prototype/fence_02.glb" id="10_3dlgs"]
+[ext_resource type="PackedScene" uid="uid://6knv1jgv1adq" path="res://assets/prototype/pillar_electro_wires_01.glb" id="11_vte5o"]
+[ext_resource type="PackedScene" uid="uid://bht6hcq0dct5b" path="res://assets/prototype/pillar_light.glb" id="12_po8fv"]
+[ext_resource type="PackedScene" uid="uid://b4d81n0w1n3rt" path="res://assets/prototype/pillar_electro.glb" id="13_ub8w1"]
 
 [sub_resource type="Environment" id="Environment_jnlp7"]
-background_mode = 2
-sky = SubResource("Sky_28aoi")
-tonemap_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.20053509, 0.3704931, 0.4367366, 0.88235295)
+tonemap_mode = 3
+tonemap_exposure = 0.8
+fog_enabled = true
+fog_light_color = Color(0.6431373, 0.8509804, 0.9882353, 1)
+fog_light_energy = 0.1
+fog_density = 0.06
+fog_height_density = -0.5
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kpj5x"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ukiqp"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_r3r3k"]
+resource_local_to_scene = true
+vertices = PackedVector3Array(-4.7076902, 0.47648686, -24.5, -4.7076902, 0.47648686, -0.5, 4.7923098, 0.47648686, -0.5, 4.7923098, 0.47648686, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="Shader" id="Shader_n07gv"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwhpj"]
+render_priority = 0
+shader = SubResource("Shader_n07gv")
+shader_parameter/albedo = Color(0.48235294, 0.5882353, 0.7490196, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_625sd"]
+render_priority = 0
+shader = SubResource("Shader_n07gv")
+shader_parameter/albedo = Color(0.48235294, 0.5882353, 0.7490196, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [node name="Root" type="Node"]
 
@@ -25,14 +119,249 @@ tonemap_mode = 2
 environment = SubResource("Environment_jnlp7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.50993776, -0.8065175, 0.29915428, -0.07430096, 0.38776526, 0.9187588, -0.8569966, 0.44628233, -0.2576611, 0, 0, 0)
+light_color = Color(1, 1, 0.54901963, 1)
+light_energy = 0.35
 shadow_enabled = true
-
-[node name="Camera Point" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_pyidc")]
-transform = Transform3D(1, 0, 0, 0, 0.9396924, 0.34202003, 0, -0.34202003, 0.9396924, 0, 0, -1)
-follow_target = NodePath("../Hero")
+directional_shadow_split_3 = 0.3
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 200.0
 
 [node name="Level Spawner" parent="." node_paths=PackedStringArray("hero") instance=ExtResource("3_vvh5c")]
 hero = NodePath("../Hero")
 
+[node name="Location Part" type="Node3D" parent="Level Spawner" node_paths=PackedStringArray("end_of_location")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+script = ExtResource("4_qwhpj")
+end_of_location = NodePath("Location End")
+
+[node name="Location End" type="Marker3D" parent="Level Spawner/Location Part"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="Walls" type="Node3D" parent="Level Spawner/Location Part"]
+visible = false
+
+[node name="Left Wall" type="StaticBody3D" parent="Level Spawner/Location Part/Walls"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, -4.733375, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Spawner/Location Part/Walls/Left Wall"]
+shape = SubResource("WorldBoundaryShape3D_kpj5x")
+
+[node name="Right Wall" type="StaticBody3D" parent="Level Spawner/Location Part/Walls"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 4.792675, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Spawner/Location Part/Walls/Right Wall"]
+shape = SubResource("WorldBoundaryShape3D_ukiqp")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level Spawner/Location Part"]
+unique_name_in_owner = true
+navigation_mesh = SubResource("NavigationMesh_r3r3k")
+
+[node name="Roads" type="Node3D" parent="Level Spawner/Location Part/NavigationRegion3D"]
+
+[node name="road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads" instance=ExtResource("5_qt76e")]
+
+[node name="Road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads/road" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qwhpj")
+
+[node name="road2" parent="Level Spawner/Location Part/NavigationRegion3D/Roads" instance=ExtResource("5_qt76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads/road2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_625sd")
+
+[node name="road3" parent="Level Spawner/Location Part/NavigationRegion3D/Roads" instance=ExtResource("5_qt76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads/road3" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_625sd")
+
+[node name="road4" parent="Level Spawner/Location Part/NavigationRegion3D/Roads" instance=ExtResource("5_qt76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="Road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads/road4" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_625sd")
+
+[node name="road5" parent="Level Spawner/Location Part/NavigationRegion3D/Roads" instance=ExtResource("5_qt76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Road" parent="Level Spawner/Location Part/NavigationRegion3D/Roads/road5" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_625sd")
+
+[node name="Obstacles" type="Node3D" parent="Level Spawner/Location Part/NavigationRegion3D"]
+
+[node name="Decorations" type="Node3D" parent="Level Spawner/Location Part"]
+
+[node name="Fences" type="Node3D" parent="Level Spawner/Location Part/Decorations"]
+
+[node name="fence_01" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -2.5049322)
+
+[node name="fence_02" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -7.5049324)
+
+[node name="fence_03" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -12.504932)
+
+[node name="fence_04" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -17.504932)
+
+[node name="fence_05" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -22.504932)
+
+[node name="fence_06" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590206, 0.17048416, -22.504932)
+
+[node name="fence_07" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.459021, 0.17048416, -17.504932)
+
+[node name="fence_08" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590216, 0.17048416, -12.504932)
+
+[node name="fence_09" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.459022, 0.17048416, -7.5049324)
+
+[node name="fence_10" parent="Level Spawner/Location Part/Decorations/Fences" instance=ExtResource("6_sq7yr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590225, 0.17048416, -2.5049324)
+
+[node name="Out Of Roads Plates" type="Node3D" parent="Level Spawner/Location Part/Decorations"]
+
+[node name="out_road_plates" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+
+[node name="out_road_plates2" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="out_road_plates3" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="out_road_plates4" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="out_road_plates5" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="out_road_plates6" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.742278e-07, 0, -25)
+
+[node name="out_road_plates7" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.371139e-07, 0, -20)
+
+[node name="out_road_plates8" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -15)
+
+[node name="out_road_plates9" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.371139e-07, 0, -10)
+
+[node name="out_road_plates10" parent="Level Spawner/Location Part/Decorations/Out Of Roads Plates" instance=ExtResource("7_r3r3k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.742278e-07, 0, -5)
+
+[node name="Buildings" type="Node3D" parent="Level Spawner/Location Part/Decorations"]
+
+[node name="house_01" parent="Level Spawner/Location Part/Decorations/Buildings" instance=ExtResource("8_blcw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -7.562312)
+
+[node name="trash_01" parent="Level Spawner/Location Part/Decorations/Buildings/house_01" instance=ExtResource("9_50g4q")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6818781, 0.076226294, 3.287323)
+
+[node name="trash_02" parent="Level Spawner/Location Part/Decorations/Buildings/house_01" instance=ExtResource("9_50g4q")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.6818781, 0.076226294, 6.774875)
+
+[node name="fence_02" parent="Level Spawner/Location Part/Decorations/Buildings/house_01" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="pillar_electro_wires_01" parent="Level Spawner/Location Part/Decorations/Buildings/house_01" instance=ExtResource("11_vte5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="house_02" parent="Level Spawner/Location Part/Decorations/Buildings" instance=ExtResource("8_blcw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -22.510466)
+
+[node name="fence_02" parent="Level Spawner/Location Part/Decorations/Buildings/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="fence_03" parent="Level Spawner/Location Part/Decorations/Buildings/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 4.038431)
+
+[node name="fence_04" parent="Level Spawner/Location Part/Decorations/Buildings/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 9.038431)
+
+[node name="fence_05" parent="Level Spawner/Location Part/Decorations/Buildings/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 14.038431)
+
+[node name="pillar_electro_wires_01" parent="Level Spawner/Location Part/Decorations/Buildings/house_02" instance=ExtResource("11_vte5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="pillar_light" parent="Level Spawner/Location Part/Decorations/Buildings" instance=ExtResource("12_po8fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -4.4151945)
+
+[node name="pillar_light2" parent="Level Spawner/Location Part/Decorations/Buildings" instance=ExtResource("12_po8fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -19.415195)
+
+[node name="pillar_electro" parent="Level Spawner/Location Part/Decorations/Buildings" instance=ExtResource("13_ub8w1")]
+transform = Transform3D(0.9276669, -2.2256899e-08, 0.37340876, 0, 0.9999999, 5.960464e-08, -0.37340876, -5.5293253e-08, 0.9276668, -6.6535873, -0.28414702, -15.214318)
+
+[node name="Buildings2" type="Node3D" parent="Level Spawner/Location Part/Decorations"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -25)
+
+[node name="house_01" parent="Level Spawner/Location Part/Decorations/Buildings2" instance=ExtResource("8_blcw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -7.562312)
+
+[node name="trash_01" parent="Level Spawner/Location Part/Decorations/Buildings2/house_01" instance=ExtResource("9_50g4q")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6818781, 0.076226294, 3.287323)
+
+[node name="trash_02" parent="Level Spawner/Location Part/Decorations/Buildings2/house_01" instance=ExtResource("9_50g4q")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.6818781, 0.076226294, 6.774875)
+
+[node name="fence_02" parent="Level Spawner/Location Part/Decorations/Buildings2/house_01" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="pillar_electro_wires_01" parent="Level Spawner/Location Part/Decorations/Buildings2/house_01" instance=ExtResource("11_vte5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="house_02" parent="Level Spawner/Location Part/Decorations/Buildings2" instance=ExtResource("8_blcw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -22.510466)
+
+[node name="fence_02" parent="Level Spawner/Location Part/Decorations/Buildings2/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="fence_03" parent="Level Spawner/Location Part/Decorations/Buildings2/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 4.038431)
+
+[node name="fence_04" parent="Level Spawner/Location Part/Decorations/Buildings2/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 9.038431)
+
+[node name="fence_05" parent="Level Spawner/Location Part/Decorations/Buildings2/house_02" instance=ExtResource("10_3dlgs")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 14.038431)
+
+[node name="pillar_electro_wires_01" parent="Level Spawner/Location Part/Decorations/Buildings2/house_02" instance=ExtResource("11_vte5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="pillar_light" parent="Level Spawner/Location Part/Decorations/Buildings2" instance=ExtResource("12_po8fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -4.4151945)
+
+[node name="pillar_light2" parent="Level Spawner/Location Part/Decorations/Buildings2" instance=ExtResource("12_po8fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -19.415195)
+
+[node name="pillar_electro" parent="Level Spawner/Location Part/Decorations/Buildings2" instance=ExtResource("13_ub8w1")]
+transform = Transform3D(0.9276669, -2.2256899e-08, 0.37340876, 0, 0.9999999, 5.960464e-08, -0.37340876, -5.5293253e-08, 0.9276668, -6.6535873, -0.28414702, -15.214318)
+
 [node name="Hero" parent="." instance=ExtResource("1_pq8q7")]
+
+[node name="Camera Point" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_pyidc")]
+transform = Transform3D(1, 0, 0, 0, 0.90630746, 0.42261815, 0, -0.42261815, 0.90630746, 0, 0, -1)
+follow_target = NodePath("../Hero")
+
+[node name="Camera Length" parent="Camera Point" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 1.932, 10)
+
+[node name="Camera3D" parent="Camera Point/Camera Length" index="0"]
+fov = 60.0
+far = 100.0
+
+[editable path="Level Spawner/Location Part/NavigationRegion3D/Roads/road"]
+[editable path="Level Spawner/Location Part/NavigationRegion3D/Roads/road2"]
+[editable path="Level Spawner/Location Part/NavigationRegion3D/Roads/road3"]
+[editable path="Level Spawner/Location Part/NavigationRegion3D/Roads/road4"]
+[editable path="Level Spawner/Location Part/NavigationRegion3D/Roads/road5"]
+[editable path="Camera Point"]

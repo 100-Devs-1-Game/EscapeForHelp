@@ -47,6 +47,8 @@ click={
 [layer_names]
 
 3d_physics/layer_5="Loot"
+3d_physics/layer_6="Player"
+3d_physics/layer_7="Enemy"
 
 [navigation]
 
@@ -56,3 +58,4 @@ click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=3

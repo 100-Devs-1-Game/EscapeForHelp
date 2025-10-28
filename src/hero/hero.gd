@@ -15,9 +15,9 @@ func _init() -> void:
 
 func _process(_delta: float) -> void:
 	var horizontal_input: float = get_horizontal_movement()
-	velocity.x = horizontal_input * movement_speed
-	velocity.z = -movement_speed
-
+	velocity = Vector3(horizontal_input, 0, -1)
+	velocity *= movement_speed
+	
 	# Track last movement direction
 	if velocity.length() > 0:
 		last_movement = velocity.normalized()
