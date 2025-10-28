@@ -10,9 +10,6 @@ func enter() -> void:
 func exit() -> void:
 	player_observer.body_entered.disconnect(_on_player_entered)
 
-func _on_player_entered(body: Node3D) -> void:
-	if not body is Player:
-		return
-	
-	chase_state.target = body as Player
+func _on_player_entered(player: Player) -> void:
+	chase_state.target = player
 	state_machine.switch_to(chase_state)
