@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg83guknsau34"]
+[gd_scene load_steps=23 format=3 uid="uid://dg83guknsau34"]
 
 [ext_resource type="Script" uid="uid://uy177ecutt1c" path="res://hero/hero.gd" id="1_pgpv3"]
 [ext_resource type="Script" uid="uid://dvsgx01aw44ka" path="res://scripts/player/player_stats.gd" id="2_eeu4s"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://cpyoy4jybrisa" path="res://scripts/passive_items/passive_data_upgrades/5_critical_chance_passive.tres" id="14_kc7lx"]
 [ext_resource type="Resource" uid="uid://jyb08233ytw6" path="res://scripts/passive_items/passive_data_upgrades/6_critical_power_passive.tres" id="15_er5ne"]
 [ext_resource type="Resource" uid="uid://bs0pdc0v6yba" path="res://scripts/passive_items/passive_data_upgrades/7_attack_speed_passive.tres" id="16_h05hn"]
+[ext_resource type="Script" uid="uid://tvdj068ubff0" path="res://hero/weapons/weapon_manager.gd" id="17_b5fwp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vho56"]
 radius = 0.3
@@ -70,6 +71,18 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_vho56")
 
+[node name="Weapon" type="Node3D" parent="."]
+
+[node name="Weapon Raycast" type="RayCast3D" parent="Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -10)
+collision_mask = 64
+collide_with_areas = true
+debug_shape_custom_color = Color(1.6364455e-06, 0.67740595, 0.7891477, 1)
+
+[node name="Fire Point" type="Marker3D" parent="Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "collector", "grabber")]
 script = ExtResource("2_eeu4s")
 character_data = SubResource("Resource_cxmd6")
@@ -99,6 +112,17 @@ metadata/_custom_type_script = "uid://dperxeiisbt1j"
 [node name="Weapons" type="Node" parent="PlayerInventory"]
 
 [node name="Passives" type="Node" parent="PlayerInventory"]
+
+[node name="WeaponManager" type="Node" parent="." node_paths=PackedStringArray("stats", "raycast", "fire_point", "cooldown")]
+script = ExtResource("17_b5fwp")
+stats = NodePath("../PlayerStats")
+raycast = NodePath("../Weapon/Weapon Raycast")
+fire_point = NodePath("../Weapon/Fire Point")
+cooldown = NodePath("Cooldown Timer")
+metadata/_custom_type_script = "uid://tvdj068ubff0"
+
+[node name="Cooldown Timer" type="Timer" parent="WeaponManager"]
+one_shot = true
 
 [connection signal="area_entered" from="Grabber" to="ExperienceManager" method="_on_grabber_area_entered"]
 [connection signal="area_entered" from="Collector" to="ExperienceManager" method="_on_collector_area_entered"]

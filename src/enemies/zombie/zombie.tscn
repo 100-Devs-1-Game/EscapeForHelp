@@ -17,6 +17,8 @@ albedo_color = Color(1, 0, 0, 1)
 radius = 14.0
 
 [node name="Zombie" type="CharacterBody3D"]
+collision_layer = 64
+collision_mask = 0
 script = ExtResource("1_usb1q")
 
 [node name="Visual" type="Node3D" parent="."]
@@ -30,7 +32,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_usb1q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_r1owf")
-disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

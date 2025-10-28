@@ -27,7 +27,8 @@ fog_enabled = true
 fog_light_color = Color(0.6431373, 0.8509804, 0.9882353, 1)
 fog_light_energy = 0.1
 fog_density = 0.06
-fog_height_density = -0.5
+fog_height = 0.1
+fog_height_density = -0.55
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kpj5x"]
 plane = Plane(1, 0, 0, 0)
