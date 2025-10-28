@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://bs0pdc0v6yba" path="res://scripts/passive_items/passive_data_upgrades/7_attack_speed_passive.tres" id="16_h05hn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vho56"]
+radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pyidc"]
 

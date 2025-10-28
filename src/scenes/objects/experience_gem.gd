@@ -4,6 +4,7 @@ extends Area3D
 @export var experience : int = 1
 @export var speed: float = -0.3
 @export var pickup_speed_step: float = 4
+@export var max_pickup_speed: float = .5
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
@@ -27,7 +28,7 @@ func _ready() -> void:
 func _physics_process(delta : float) -> void:
 	if target != null:
 		global_position = global_position.move_toward(target.global_position, speed)
-		speed += pickup_speed_step * delta
+		speed = min(speed + pickup_speed_step * delta, max_pickup_speed)
 		
 func collect() -> int:
 	snd_collected.play()
