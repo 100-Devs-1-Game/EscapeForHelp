@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-
+      
+      - name: Update project version
+        run: printf '%s\n' '${{ github.ref_name }}' > ./src/version.txt
+      
       - name: Build game
         id: build
         uses: firebelley/godot-export@v5.2.1
