@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5xrq3lh66wmo"]
+[gd_scene load_steps=10 format=3 uid="uid://c5xrq3lh66wmo"]
 
 [ext_resource type="Script" uid="uid://cgb21boywrwlj" path="res://enemies/zombie/zombie.gd" id="1_usb1q"]
 [ext_resource type="Script" uid="uid://cewylhkdhrfgb" path="res://common/states/state_machine.gd" id="2_bwstf"]
 [ext_resource type="Script" uid="uid://tow66amum1kd" path="res://enemies/ai/states/idle_enemy_state.gd" id="3_20vm6"]
 [ext_resource type="Script" uid="uid://rt8wpno2nxrv" path="res://enemies/ai/states/chase_enemy_state.gd" id="4_y7vlx"]
+[ext_resource type="Script" uid="uid://cvc1s77r88rsr" path="res://common/floating_label/floating_number_spawner.gd" id="5_20vm6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_swqmq"]
 
@@ -43,6 +44,9 @@ collision_mask = 32
 shape = SubResource("SphereShape3D_usb1q")
 debug_color = Color(0.97467774, 0, 0.42848563, 0.41960785)
 
+[node name="Floating Number Spawn Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4430172, 0)
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_bwstf")
 initial_state = NodePath("IdleEnemyState")
@@ -60,3 +64,10 @@ idle = NodePath("../IdleEnemyState")
 body = NodePath("../..")
 agent = NodePath("../../NavigationAgent3D")
 metadata/_custom_type_script = "uid://rt8wpno2nxrv"
+
+[node name="FloatingNumbersSpawner" type="Node" parent="." node_paths=PackedStringArray("center")]
+unique_name_in_owner = true
+script = ExtResource("5_20vm6")
+center = NodePath("../Floating Number Spawn Position")
+radius = 0.3
+metadata/_custom_type_script = "uid://cvc1s77r88rsr"

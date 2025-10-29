@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ep84ern8st5"]
+
+[ext_resource type="FontFile" uid="uid://cmswx3yibwaqp" path="res://assets/external/press-start-2p-font/PressStart2P-Regular.ttf" id="1_ujcop"]
+[ext_resource type="Script" uid="uid://bxund5dwx6tn1" path="res://common/life_timer.gd" id="2_dmsws"]
+
+[node name="Floating Label" type="Label3D"]
+billboard = 1
+double_sided = false
+no_depth_test = true
+text = "10"
+font = ExtResource("1_ujcop")
+font_size = 82
+outline_size = 24
+
+[node name="LifeTimer" type="Timer" parent="." node_paths=PackedStringArray("target_for_destroy")]
+one_shot = true
+autostart = true
+script = ExtResource("2_dmsws")
+target_for_destroy = NodePath("..")
+metadata/_custom_type_script = "uid://bxund5dwx6tn1"

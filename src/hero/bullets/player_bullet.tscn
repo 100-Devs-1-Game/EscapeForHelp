@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6td74vi0i13n"]
+[gd_scene load_steps=6 format=3 uid="uid://c6td74vi0i13n"]
 
 [ext_resource type="Script" uid="uid://dcp4vvrxknj23" path="res://hero/bullets/player_bullet.gd" id="1_tjtg2"]
+[ext_resource type="Script" uid="uid://bxund5dwx6tn1" path="res://common/life_timer.gd" id="2_qv8fg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rlbk2"]
 radius = 0.2
@@ -24,5 +25,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rlbk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_rlbk2")
+
+[node name="LifeTimer" type="Timer" parent="." node_paths=PackedStringArray("target_for_destroy")]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("2_qv8fg")
+target_for_destroy = NodePath("..")
+metadata/_custom_type_script = "uid://bxund5dwx6tn1"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
