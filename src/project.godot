@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 Global="*res://autoload/global.gd"
 
+[dotnet]
+
+project/assembly_name="Escape For Help"
+
 [input]
 
 move_left={
