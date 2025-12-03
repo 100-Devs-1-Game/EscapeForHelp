@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://mqnwoy16ar4a" path="res://levels/locations/prototype/default_level.tres" id="2_5vrru"]
 
 [node name="Level Spawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011924736, 0, 0)
 script = ExtResource("1_we8bc")
 level_resource = ExtResource("2_5vrru")
 

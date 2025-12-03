@@ -1,0 +1,400 @@
+[gd_scene load_steps=16 format=3 uid="uid://cgle3p3rqbtlk"]
+
+[ext_resource type="PackedScene" uid="uid://c1ysyejj266nc" path="res://levels/locations/prototype/location_part.tscn" id="1_wtcpb"]
+[ext_resource type="PackedScene" uid="uid://book50hs6o70a" path="res://assets/prototype/fence_01.glb" id="2_4wlx5"]
+[ext_resource type="PackedScene" uid="uid://c5xrq3lh66wmo" path="res://enemies/zombie/zombie.tscn" id="2_k4wam"]
+[ext_resource type="PackedScene" uid="uid://cel78n1to0r45" path="res://assets/prototype/out_road_plates.glb" id="3_k4wam"]
+[ext_resource type="PackedScene" uid="uid://bnu26vfltmvie" path="res://assets/prototype/house_01.glb" id="4_tklnr"]
+[ext_resource type="PackedScene" uid="uid://c71ugjool5ap4" path="res://assets/prototype/trash_01.glb" id="5_okhtw"]
+[ext_resource type="PackedScene" uid="uid://cccsfdp8ajebx" path="res://assets/prototype/fence_02.glb" id="6_vdygd"]
+[ext_resource type="PackedScene" uid="uid://6knv1jgv1adq" path="res://assets/prototype/pillar_electro_wires_01.glb" id="7_rnv4t"]
+[ext_resource type="PackedScene" uid="uid://bht6hcq0dct5b" path="res://assets/prototype/pillar_light.glb" id="8_abepn"]
+[ext_resource type="PackedScene" uid="uid://b4d81n0w1n3rt" path="res://assets/prototype/pillar_electro.glb" id="9_n818e"]
+[ext_resource type="PackedScene" uid="uid://newj2duowev" path="res://assets/prototype/block.glb" id="10_6l5h7"]
+[ext_resource type="PackedScene" uid="uid://cjew4tw8apxe3" path="res://assets/prototype/bottle_01.glb" id="11_bynck"]
+[ext_resource type="PackedScene" uid="uid://dre83te142j4o" path="res://assets/prototype/open_box_01.glb" id="12_4ag7b"]
+[ext_resource type="PackedScene" uid="uid://j83y147y10ly" path="res://assets/prototype/barrel_01.glb" id="13_76cfq"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_03c1e"]
+resource_local_to_scene = true
+vertices = PackedVector3Array(-4.7076902, 0.47648686, -24.5, -4.7076902, 0.47648686, -0.5, 4.7923098, 0.47648686, -0.5, 4.7923098, 0.47648686, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="location_2" instance=ExtResource("1_wtcpb")]
+
+[node name="NavigationRegion3D" parent="." index="2"]
+navigation_mesh = SubResource("NavigationMesh_03c1e")
+
+[node name="Zombie" parent="Enemies" index="0" instance=ExtResource("2_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.438794)
+
+[node name="Zombie2" parent="Enemies" index="1" instance=ExtResource("2_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1441417, 0, -21.37954)
+
+[node name="Fences" type="Node3D" parent="Decorations" index="0"]
+
+[node name="fence_01" parent="Decorations/Fences" index="0" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -2.5049322)
+
+[node name="fence_02" parent="Decorations/Fences" index="1" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -7.5049324)
+
+[node name="fence_03" parent="Decorations/Fences" index="2" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -12.504932)
+
+[node name="fence_04" parent="Decorations/Fences" index="3" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -17.504932)
+
+[node name="fence_05" parent="Decorations/Fences" index="4" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4640923, 0.17048416, -22.504932)
+
+[node name="fence_06" parent="Decorations/Fences" index="5" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590206, 0.17048416, -22.504932)
+
+[node name="fence_07" parent="Decorations/Fences" index="6" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.459021, 0.17048416, -17.504932)
+
+[node name="fence_08" parent="Decorations/Fences" index="7" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590216, 0.17048416, -12.504932)
+
+[node name="fence_10" parent="Decorations/Fences" index="8" instance=ExtResource("2_4wlx5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.4590225, 0.17048416, -2.5049324)
+
+[node name="Out Of Roads Plates" type="Node3D" parent="Decorations" index="1"]
+
+[node name="out_road_plates" parent="Decorations/Out Of Roads Plates" index="0" instance=ExtResource("3_k4wam")]
+
+[node name="out_road_plates2" parent="Decorations/Out Of Roads Plates" index="1" instance=ExtResource("3_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="out_road_plates3" parent="Decorations/Out Of Roads Plates" index="2" instance=ExtResource("3_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="out_road_plates4" parent="Decorations/Out Of Roads Plates" index="3" instance=ExtResource("3_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="out_road_plates5" parent="Decorations/Out Of Roads Plates" index="4" instance=ExtResource("3_k4wam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="out_road_plates6" parent="Decorations/Out Of Roads Plates" index="5" instance=ExtResource("3_k4wam")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.742278e-07, 0, -25)
+
+[node name="out_road_plates7" parent="Decorations/Out Of Roads Plates" index="6" instance=ExtResource("3_k4wam")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.371139e-07, 0, -20)
+
+[node name="out_road_plates8" parent="Decorations/Out Of Roads Plates" index="7" instance=ExtResource("3_k4wam")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -15)
+
+[node name="out_road_plates9" parent="Decorations/Out Of Roads Plates" index="8" instance=ExtResource("3_k4wam")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.371139e-07, 0, -10)
+
+[node name="out_road_plates10" parent="Decorations/Out Of Roads Plates" index="9" instance=ExtResource("3_k4wam")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.742278e-07, 0, -5)
+
+[node name="Buildings" type="Node3D" parent="Decorations" index="2"]
+
+[node name="house_01" parent="Decorations/Buildings" index="0" instance=ExtResource("4_tklnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -7.562312)
+
+[node name="trash_01" parent="Decorations/Buildings/house_01" index="1" instance=ExtResource("5_okhtw")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6818781, 0.076226294, 3.287323)
+
+[node name="trash_02" parent="Decorations/Buildings/house_01" index="2" instance=ExtResource("5_okhtw")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.6818781, 0.076226294, 6.774875)
+
+[node name="fence_02" parent="Decorations/Buildings/house_01" index="3" instance=ExtResource("6_vdygd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="pillar_electro_wires_01" parent="Decorations/Buildings/house_01" index="4" instance=ExtResource("7_rnv4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="house_02" parent="Decorations/Buildings" index="1" instance=ExtResource("4_tklnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -22.510466)
+
+[node name="fence_02" parent="Decorations/Buildings/house_02" index="1" instance=ExtResource("6_vdygd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="fence_03" parent="Decorations/Buildings/house_02" index="2" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 4.038431)
+
+[node name="fence_04" parent="Decorations/Buildings/house_02" index="3" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 9.038431)
+
+[node name="fence_05" parent="Decorations/Buildings/house_02" index="4" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 14.038431)
+
+[node name="pillar_electro_wires_01" parent="Decorations/Buildings/house_02" index="5" instance=ExtResource("7_rnv4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="pillar_light" parent="Decorations/Buildings" index="2" instance=ExtResource("8_abepn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -4.4151945)
+
+[node name="pillar_light2" parent="Decorations/Buildings" index="3" instance=ExtResource("8_abepn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -19.415195)
+
+[node name="pillar_electro" parent="Decorations/Buildings" index="4" instance=ExtResource("9_n818e")]
+transform = Transform3D(0.9276669, -2.2256899e-08, 0.37340876, 0, 0.9999999, 5.960464e-08, -0.37340876, -5.5293253e-08, 0.9276668, -6.6535873, -0.28414702, -15.214318)
+
+[node name="Buildings2" type="Node3D" parent="Decorations" index="3"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -25)
+
+[node name="house_01" parent="Decorations/Buildings2" index="0" instance=ExtResource("4_tklnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -7.562312)
+
+[node name="trash_01" parent="Decorations/Buildings2/house_01" index="1" instance=ExtResource("5_okhtw")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6818781, 0.076226294, 3.287323)
+
+[node name="trash_02" parent="Decorations/Buildings2/house_01" index="2" instance=ExtResource("5_okhtw")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.6818781, 0.076226294, 6.774875)
+
+[node name="fence_02" parent="Decorations/Buildings2/house_01" index="3" instance=ExtResource("6_vdygd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="pillar_electro_wires_01" parent="Decorations/Buildings2/house_01" index="4" instance=ExtResource("7_rnv4t")]
+transform = Transform3D(1, 2.0476683e-08, 2.4319107e-09, -2.0476683e-08, 0.9721822, 0.23422596, 2.4319107e-09, -0.23422596, 0.9721822, 3.8336492, -0.047884464, -1.380949)
+
+[node name="house_02" parent="Decorations/Buildings2" index="1" instance=ExtResource("4_tklnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.110966, 0.14977807, -22.510466)
+
+[node name="fence_02" parent="Decorations/Buildings2/house_02" index="1" instance=ExtResource("6_vdygd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1618176, 0, 5.038431)
+
+[node name="fence_03" parent="Decorations/Buildings2/house_02" index="2" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 4.038431)
+
+[node name="fence_04" parent="Decorations/Buildings2/house_02" index="3" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 9.038431)
+
+[node name="fence_05" parent="Decorations/Buildings2/house_02" index="4" instance=ExtResource("6_vdygd")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -3.8381824, 0, 14.038431)
+
+[node name="pillar_electro_wires_01" parent="Decorations/Buildings2/house_02" index="5" instance=ExtResource("7_rnv4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8336487, -0.047884464, -1.380949)
+
+[node name="pillar_light" parent="Decorations/Buildings2" index="2" instance=ExtResource("8_abepn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -4.4151945)
+
+[node name="pillar_light2" parent="Decorations/Buildings2" index="3" instance=ExtResource("8_abepn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.096191, 0.104887605, -19.415195)
+
+[node name="pillar_electro" parent="Decorations/Buildings2" index="4" instance=ExtResource("9_n818e")]
+transform = Transform3D(0.9276669, -2.2256899e-08, 0.37340876, 0, 0.9999999, 5.960464e-08, -0.37340876, -5.5293253e-08, 0.9276668, -6.6535873, -0.28414702, -15.214318)
+
+[node name="Small Details" type="Node3D" parent="Decorations" index="4"]
+
+[node name="block" parent="Decorations/Small Details" index="0" instance=ExtResource("10_6l5h7")]
+transform = Transform3D(0.57908195, 0, 0.81526935, 0, 1, 0, -0.81526935, 0, 0.57908195, -8.766508, -4.7683716e-07, -14.265645)
+
+[node name="block2" parent="Decorations/Small Details" index="1" instance=ExtResource("10_6l5h7")]
+transform = Transform3D(0.6161566, 0, -0.7876237, 0, 1, 0, 0.7876237, 0, 0.6161566, -9.100794, -4.7683716e-07, -11.635945)
+
+[node name="Bottles" type="Node3D" parent="Decorations/Small Details" index="2"]
+
+[node name="bottle_01" parent="Decorations/Small Details/Bottles" index="0" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.931522, 0.17762503, -4.338973)
+
+[node name="bottle_02" parent="Decorations/Small Details/Bottles" index="1" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.179319, 0.17762503, -4.1973743)
+
+[node name="bottle_03" parent="Decorations/Small Details/Bottles" index="2" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.683764, 0.17762503, -5.2062645)
+
+[node name="bottle_04" parent="Decorations/Small Details/Bottles" index="3" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.710314, 0.17762503, -3.0468853)
+
+[node name="bottle_05" parent="Decorations/Small Details/Bottles" index="4" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9225907, 0.17762503, -4.896517)
+
+[node name="bottle_06" parent="Decorations/Small Details/Bottles" index="5" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.001605, 0.17762503, -5.1127124)
+
+[node name="bottle_07" parent="Decorations/Small Details/Bottles" index="6" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9755115, -0.21994837, -9.614248e-09, 0, -4.371139e-08, 1, -0.21994837, -0.9755115, -4.2640963e-08, -6.0506325, 0.2466208, -4.755096)
+
+[node name="bottle_08" parent="Decorations/Small Details/Bottles" index="7" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.3658695, 0.17762491, -8.528492)
+
+[node name="bottle_09" parent="Decorations/Small Details/Bottles" index="8" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.285549, 0.17762491, -8.744206)
+
+[node name="bottle_10" parent="Decorations/Small Details/Bottles" index="9" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.5550785, 0.24662068, -8.504109)
+
+[node name="bottle_11" parent="Decorations/Small Details/Bottles" index="10" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.690955, 0.17762491, -13.127855)
+
+[node name="bottle_12" parent="Decorations/Small Details/Bottles" index="11" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.610635, 0.17762491, -13.34357)
+
+[node name="bottle_13" parent="Decorations/Small Details/Bottles" index="12" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.880164, 0.24662068, -13.103473)
+
+[node name="bottle_14" parent="Decorations/Small Details/Bottles" index="13" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.3142, 0.17762491, -18.713634)
+
+[node name="bottle_15" parent="Decorations/Small Details/Bottles" index="14" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.23388, 0.17762491, -18.929348)
+
+[node name="bottle_16" parent="Decorations/Small Details/Bottles" index="15" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.503409, 0.24662068, -18.68925)
+
+[node name="bottle_17" parent="Decorations/Small Details/Bottles" index="16" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9991294, 0, 0.04171875, 0, 1, 0, -0.04171875, 0, 0.9991294, -5.9053144, 0.17762491, -23.129004)
+
+[node name="bottle_18" parent="Decorations/Small Details/Bottles" index="17" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9991294, 0, 0.04171875, 0, 1, 0, -0.04171875, 0, 0.9991294, -5.9932795, 0.17762491, -23.341713)
+
+[node name="bottle_19" parent="Decorations/Small Details/Bottles" index="18" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9654863, -0.2604541, -1.1384802e-08, 7.813072e-16, -4.3711385e-08, 1, -0.2604541, -0.9654863, -4.2202743e-08, -6.027345, 0.24662068, -22.982363)
+
+[node name="open_box_01" parent="Decorations/Small Details" index="3" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(0.8661999, 0, -0.49969766, 0, 1, 0, 0.49969766, 0, 0.8661999, -7.7626796, 0.16665477, -6.469262)
+
+[node name="open_box_02" parent="Decorations/Small Details" index="4" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.91967076, 0, -0.39269027, 0, 1, 0, 0.39269027, 0, -0.91967076, -8.123271, 0.16665477, -22.239603)
+
+[node name="open_box_03" parent="Decorations/Small Details" index="5" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.91967076, 0, -0.39269027, 0, 1, 0, 0.39269027, 0, -0.91967076, -10.279264, 0.16665381, -18.535347)
+
+[node name="open_box_04" parent="Decorations/Small Details" index="6" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.9175327, 0, 0.39766032, 0, 1, 0, -0.39766032, 0, -0.9175327, -13.179823, 0.16665381, -18.65649)
+
+[node name="open_box_05" parent="Decorations/Small Details" index="7" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.9175327, 0, 0.39766032, 0, 1, 0, -0.39766032, 0, -0.9175327, -10.486444, 0.05321759, -13.293317)
+
+[node name="barrel_01" parent="Decorations/Small Details" index="8" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.148416, 0.15933502, -9.9450445)
+
+[node name="barrel_02" parent="Decorations/Small Details" index="9" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.548279, 0.15933454, -3.5580316)
+
+[node name="barrel_03" parent="Decorations/Small Details" index="10" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.084194, 0.15933454, -1.8372266)
+
+[node name="barrel_05" parent="Decorations/Small Details" index="11" instance=ExtResource("13_76cfq")]
+transform = Transform3D(0.9387639, 0, -0.344561, 0, 1, 0, 0.344561, 0, 0.9387639, -13.060993, 0.15933454, -16.539103)
+
+[node name="barrel_04" parent="Decorations/Small Details" index="12" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-3.1245285e-08, 0.5242089, -0.85158974, -1, -5.9604645e-08, 0, -5.07587e-08, 0.8515897, 0.524209, -12.490443, 0.77272904, -17.86811)
+
+[node name="barrel_06" parent="Decorations/Small Details" index="13" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-0.27118853, 0, -0.9625262, 0, 1, 0, 0.9625262, 0, -0.27118853, -13.1267185, 0.15933454, -12.616037)
+
+[node name="barrel_07" parent="Decorations/Small Details" index="14" instance=ExtResource("13_76cfq")]
+transform = Transform3D(4.819976e-08, -0.80865777, -0.5882795, -1, -5.9604645e-08, 0, -3.5064183e-08, 0.58827937, -0.80865777, -11.757692, 0.77272904, -12.149607)
+
+[node name="barrel_08" parent="Decorations/Small Details" index="15" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-0.597947, 0, -0.80153555, 0, 1, 0, 0.80153555, 0, -0.597947, -6.995459, 0.15933454, -20.716047)
+
+[node name="barrel_09" parent="Decorations/Small Details" index="16" instance=ExtResource("13_76cfq")]
+transform = Transform3D(5.7560992e-08, -0.9657132, -0.25961146, -1, -5.9604645e-08, 0, -1.5474042e-08, 0.25961134, -0.96571326, -5.8843226, 0.77272904, -19.790213)
+
+[node name="Small Details2" type="Node3D" parent="Decorations" index="5"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -25)
+
+[node name="block" parent="Decorations/Small Details2" index="0" instance=ExtResource("10_6l5h7")]
+transform = Transform3D(0.57908195, 0, 0.81526935, 0, 1, 0, -0.81526935, 0, 0.57908195, -8.766508, 0.17194188, -14.265645)
+
+[node name="block2" parent="Decorations/Small Details2" index="1" instance=ExtResource("10_6l5h7")]
+transform = Transform3D(0.6161566, 0, -0.7876237, 0, 1, 0, 0.7876237, 0, 0.6161566, -9.100794, 0.17194188, -11.635945)
+
+[node name="Bottles" type="Node3D" parent="Decorations/Small Details2" index="2"]
+
+[node name="bottle_01" parent="Decorations/Small Details2/Bottles" index="0" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.931522, 0.17762503, -4.338973)
+
+[node name="bottle_02" parent="Decorations/Small Details2/Bottles" index="1" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.179319, 0.17762503, -4.1973743)
+
+[node name="bottle_03" parent="Decorations/Small Details2/Bottles" index="2" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.683764, 0.17762503, -5.2062645)
+
+[node name="bottle_04" parent="Decorations/Small Details2/Bottles" index="3" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.710314, 0.17762503, -3.0468853)
+
+[node name="bottle_05" parent="Decorations/Small Details2/Bottles" index="4" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9225907, 0.17762503, -4.896517)
+
+[node name="bottle_06" parent="Decorations/Small Details2/Bottles" index="5" instance=ExtResource("11_bynck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.001605, 0.17762503, -5.1127124)
+
+[node name="bottle_07" parent="Decorations/Small Details2/Bottles" index="6" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9755115, -0.21994837, -9.614248e-09, 0, -4.371139e-08, 1, -0.21994837, -0.9755115, -4.2640963e-08, -6.0506325, 0.2466208, -4.755096)
+
+[node name="bottle_08" parent="Decorations/Small Details2/Bottles" index="7" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.3658695, 0.17762491, -8.528492)
+
+[node name="bottle_09" parent="Decorations/Small Details2/Bottles" index="8" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.285549, 0.17762491, -8.744206)
+
+[node name="bottle_10" parent="Decorations/Small Details2/Bottles" index="9" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.5550785, 0.24662068, -8.504109)
+
+[node name="bottle_11" parent="Decorations/Small Details2/Bottles" index="10" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.690955, 0.17762491, -13.127855)
+
+[node name="bottle_12" parent="Decorations/Small Details2/Bottles" index="11" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.610635, 0.17762491, -13.34357)
+
+[node name="bottle_13" parent="Decorations/Small Details2/Bottles" index="12" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.880164, 0.24662068, -13.103473)
+
+[node name="bottle_14" parent="Decorations/Small Details2/Bottles" index="13" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.3142, 0.17762491, -18.713634)
+
+[node name="bottle_15" parent="Decorations/Small Details2/Bottles" index="14" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.76041734, 0, -0.64943475, 0, 1, 0, 0.64943475, 0, 0.76041734, -8.23388, 0.17762491, -18.929348)
+
+[node name="bottle_16" parent="Decorations/Small Details2/Bottles" index="15" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.8846381, 0.4662785, 2.0381684e-08, 8.6642825e-16, -4.371139e-08, 1, 0.4662785, -0.8846381, -3.8668755e-08, -8.503409, 0.24662068, -18.68925)
+
+[node name="bottle_17" parent="Decorations/Small Details2/Bottles" index="16" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9991294, 0, 0.04171875, 0, 1, 0, -0.04171875, 0, 0.9991294, -5.9053144, 0.17762491, -23.129004)
+
+[node name="bottle_18" parent="Decorations/Small Details2/Bottles" index="17" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9991294, 0, 0.04171875, 0, 1, 0, -0.04171875, 0, 0.9991294, -5.9932795, 0.17762491, -23.341713)
+
+[node name="bottle_19" parent="Decorations/Small Details2/Bottles" index="18" instance=ExtResource("11_bynck")]
+transform = Transform3D(0.9654863, -0.2604541, -1.1384802e-08, 7.813072e-16, -4.3711385e-08, 1, -0.2604541, -0.9654863, -4.2202743e-08, -6.027345, 0.24662068, -22.982363)
+
+[node name="open_box_01" parent="Decorations/Small Details2" index="3" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(0.8661999, 0, -0.49969766, 0, 1, 0, 0.49969766, 0, 0.8661999, -7.7626796, 0.16665477, -6.469262)
+
+[node name="open_box_02" parent="Decorations/Small Details2" index="4" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.91967076, 0, -0.39269027, 0, 1, 0, 0.39269027, 0, -0.91967076, -8.123271, 0.16665477, -22.239603)
+
+[node name="open_box_03" parent="Decorations/Small Details2" index="5" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.91967076, 0, -0.39269027, 0, 1, 0, 0.39269027, 0, -0.91967076, -10.279264, 0.16665381, -18.535347)
+
+[node name="open_box_04" parent="Decorations/Small Details2" index="6" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.9175327, 0, 0.39766032, 0, 1, 0, -0.39766032, 0, -0.9175327, -13.179823, 0.16665381, -18.65649)
+
+[node name="open_box_05" parent="Decorations/Small Details2" index="7" instance=ExtResource("12_4ag7b")]
+transform = Transform3D(-0.9175327, 0, 0.39766032, 0, 1, 0, -0.39766032, 0, -0.9175327, -10.486444, 0.05321759, -13.293317)
+
+[node name="barrel_01" parent="Decorations/Small Details2" index="8" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.148416, 0.15933502, -9.9450445)
+
+[node name="barrel_02" parent="Decorations/Small Details2" index="9" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.548279, 0.15933454, -3.5580316)
+
+[node name="barrel_03" parent="Decorations/Small Details2" index="10" instance=ExtResource("13_76cfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.084194, 0.15933454, -1.8372266)
+
+[node name="barrel_05" parent="Decorations/Small Details2" index="11" instance=ExtResource("13_76cfq")]
+transform = Transform3D(0.9387639, 0, -0.344561, 0, 1, 0, 0.344561, 0, 0.9387639, -13.060993, 0.15933454, -16.539103)
+
+[node name="barrel_04" parent="Decorations/Small Details2" index="12" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-3.1245285e-08, 0.5242089, -0.85158974, -1, -5.9604645e-08, 0, -5.07587e-08, 0.8515897, 0.524209, -12.490443, 0.77272904, -17.86811)
+
+[node name="barrel_06" parent="Decorations/Small Details2" index="13" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-0.27118853, 0, -0.9625262, 0, 1, 0, 0.9625262, 0, -0.27118853, -13.1267185, 0.15933454, -12.616037)
+
+[node name="barrel_07" parent="Decorations/Small Details2" index="14" instance=ExtResource("13_76cfq")]
+transform = Transform3D(4.819976e-08, -0.80865777, -0.5882795, -1, -5.9604645e-08, 0, -3.5064183e-08, 0.58827937, -0.80865777, -11.757692, 0.77272904, -12.149607)
+
+[node name="barrel_08" parent="Decorations/Small Details2" index="15" instance=ExtResource("13_76cfq")]
+transform = Transform3D(-0.597947, 0, -0.80153555, 0, 1, 0, 0.80153555, 0, -0.597947, -6.995459, 0.15933454, -20.716047)
+
+[node name="barrel_09" parent="Decorations/Small Details2" index="16" instance=ExtResource("13_76cfq")]
+transform = Transform3D(5.7560992e-08, -0.9657132, -0.25961146, -1, -5.9604645e-08, 0, -1.5474042e-08, 0.25961134, -0.96571326, -5.8843226, 0.77272904, -19.790213)
