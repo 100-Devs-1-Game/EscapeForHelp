@@ -13,7 +13,9 @@ extends Area3D
 var target : Node3D = null
 
 func _ready() -> void:
-	# Create a new material to override the mesh color based on experience value
+	var positions := [-2.5, 0, 3]
+	global_position.x = positions[randi() % positions.size()]
+
 	var material: StandardMaterial3D = mesh_instance_3d.get_surface_override_material(0)
 	
 	if experience < 5:
