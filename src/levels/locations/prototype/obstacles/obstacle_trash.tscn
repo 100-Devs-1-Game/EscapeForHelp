@@ -23,3 +23,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03844452, 0.47583008, -0.02
 shape = SubResource("BoxShape3D_wupvl")
 
 [node name="block" parent="." instance=ExtResource("2_r3skp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07325506, 0, 0)
