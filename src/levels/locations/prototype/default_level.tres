@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=3 format=3 uid="uid://mqnwoy16ar4a"]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=4 format=3 uid="uid://mqnwoy16ar4a"]
 
-[ext_resource type="PackedScene" uid="uid://c1ysyejj266nc" path="res://levels/locations/prototype/location_part.tscn" id="1_ffco5"]
+[ext_resource type="PackedScene" uid="uid://bek36ptmuvabg" path="res://levels/locations/location_parts_com/location_1.tscn" id="2_njqm7"]
+[ext_resource type="PackedScene" uid="uid://2uc8aoowj3fu" path="res://levels/locations/location_parts_com/location_3.tscn" id="2_wap7d"]
 [ext_resource type="Script" uid="uid://cjlm3bslepiis" path="res://levels/config/level_resource.gd" id="2_yvupp"]
 
 [resource]
 script = ExtResource("2_yvupp")
 spawn_distance = 100.0
-locations = Array[PackedScene]([ExtResource("1_ffco5")])
+locations = Array[PackedScene]([ExtResource("2_njqm7"), ExtResource("2_wap7d"), ExtResource("2_wap7d")])
 metadata/_custom_type_script = "uid://cjlm3bslepiis"

@@ -156,6 +156,7 @@ directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 200.0
 
 [node name="Level Spawner" parent="." node_paths=PackedStringArray("hero") instance=ExtResource("3_vvh5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.006934166)
 hero = NodePath("../Hero")
 
 [node name="Location Part" type="Node3D" parent="Level Spawner" node_paths=PackedStringArray("end_of_location")]
