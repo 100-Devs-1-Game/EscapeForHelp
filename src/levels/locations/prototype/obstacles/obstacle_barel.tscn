@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq4oiw15fc40t"]
+
+[ext_resource type="Script" uid="uid://ujx20du1xw4k" path="res://levels/locations/prototype/obstacles/take_damage.gd" id="1_x1qqo"]
+[ext_resource type="PackedScene" uid="uid://j83y147y10ly" path="res://assets/prototype/barrel_01.glb" id="2_heueh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jipnd"]
+size = Vector3(1, 1.4324951, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wupvl"]
+size = Vector3(1.0878906, 1.4609375, 1.050293)
+
+[node name="Protoype Box" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21624756, 0)
+shape = SubResource("BoxShape3D_jipnd")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_x1qqo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029296875, 0.23046875, 0.007080078)
+shape = SubResource("BoxShape3D_wupvl")
+
+[node name="barrel_01" parent="." instance=ExtResource("2_heueh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44892997, 0)
