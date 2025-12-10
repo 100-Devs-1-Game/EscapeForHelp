@@ -1,6 +1,26 @@
+<<<<<<< HEAD
 [gd_scene load_steps=10 format=4 uid="uid://c1ysyejj266nc"]
 
 [ext_resource type="Script" uid="uid://72ddk2kvkr2x" path="res://levels/location_part.gd" id="1_xpi3g"]
+=======
+[gd_scene load_steps=25 format=4 uid="uid://c1ysyejj266nc"]
+
+[ext_resource type="Script" uid="uid://72ddk2kvkr2x" path="res://levels/location_part.gd" id="1_xpi3g"]
+[ext_resource type="PackedScene" uid="uid://hki6gwvixnp0" path="res://scenes/objects/experience_gem.tscn" id="3_l10et"]
+[ext_resource type="PackedScene" uid="uid://c5xrq3lh66wmo" path="res://enemies/zombie/zombie.tscn" id="4_ufydi"]
+[ext_resource type="PackedScene" uid="uid://book50hs6o70a" path="res://assets/prototype/fence_01.glb" id="5_625sd"]
+[ext_resource type="PackedScene" uid="uid://cel78n1to0r45" path="res://assets/prototype/out_road_plates.glb" id="6_svega"]
+[ext_resource type="PackedScene" uid="uid://bnu26vfltmvie" path="res://assets/prototype/house_01.glb" id="7_vwqlu"]
+[ext_resource type="PackedScene" uid="uid://c71ugjool5ap4" path="res://assets/prototype/trash_01.glb" id="8_55pgv"]
+[ext_resource type="PackedScene" uid="uid://cccsfdp8ajebx" path="res://assets/prototype/fence_02.glb" id="9_igsnc"]
+[ext_resource type="PackedScene" uid="uid://6knv1jgv1adq" path="res://assets/prototype/pillar_electro_wires_01.glb" id="10_jky5n"]
+[ext_resource type="PackedScene" uid="uid://bht6hcq0dct5b" path="res://assets/prototype/pillar_light.glb" id="11_bmw6p"]
+[ext_resource type="PackedScene" uid="uid://b4d81n0w1n3rt" path="res://assets/prototype/pillar_electro.glb" id="12_no7tp"]
+[ext_resource type="PackedScene" uid="uid://newj2duowev" path="res://assets/prototype/block.glb" id="12_vwqlu"]
+[ext_resource type="PackedScene" uid="uid://cjew4tw8apxe3" path="res://assets/prototype/bottle_01.glb" id="13_55pgv"]
+[ext_resource type="PackedScene" uid="uid://dre83te142j4o" path="res://assets/prototype/open_box_01.glb" id="14_igsnc"]
+[ext_resource type="PackedScene" uid="uid://j83y147y10ly" path="res://assets/prototype/barrel_01.glb" id="15_jky5n"]
+>>>>>>> parent of 1a85755 (Merge pull request #4 from 100-Devs-1-Game/dev)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kpj5x"]
 plane = Plane(1, 0, 0, 0)
@@ -181,20 +201,17 @@ skeleton = NodePath("")
 
 [node name="Enemies" type="Node3D" parent="."]
 [node name="ExperienceGem" parent="Drops" instance=ExtResource("3_l10et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.588189, 0.68852663, -10.310865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8778133, 0.68852663, -10.310865)
 experience = 40
 
 [node name="ExperienceGem2" parent="Drops" instance=ExtResource("3_l10et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6747022, 0.68852663, -6.746949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5372372, 0.68852663, -6.746949)
 
 [node name="ExperienceGem3" parent="Drops" instance=ExtResource("3_l10et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8719692, 0.68852663, -14.967716)
 
 [node name="ExperienceGem4" parent="Drops" instance=ExtResource("3_l10et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0678902, 0.68852663, -22.42818)
-
-[node name="Protoype Box" parent="Drops" instance=ExtResource("3_55pgv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6477692, -7.9934797)
 
 [node name="Zombie" parent="." instance=ExtResource("4_ufydi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.707624)
