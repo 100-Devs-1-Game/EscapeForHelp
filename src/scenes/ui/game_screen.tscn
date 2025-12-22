@@ -18,9 +18,9 @@ collected_upgrades = NodePath("Control/Inventory/VBoxContainer/CollectedUpgrades
 lbl_stats = NodePath("Control/StatusDisplay/StatsLabel")
 death_panel = NodePath("Control/Panels/DeathPanel")
 lbl_result = NodePath("Control/Panels/DeathPanel/LblResult")
-level_up_panel = NodePath("Control/Panels/LevelUp")
-lbl_level_up = NodePath("Control/Panels/LevelUp/PanelContainer/MarginContainer/VBoxContainer/LblLevelUp")
-upgrade_options_container = NodePath("Control/Panels/LevelUp/PanelContainer/MarginContainer/VBoxContainer/UpgradeOptions")
+level_up_panel = NodePath("Control/Panels/PanelContainerLevelUp")
+lbl_level_up = NodePath("Control/Panels/PanelContainerLevelUp/MarginContainer/VBoxContainer/LblLevelUp")
+upgrade_options_container = NodePath("Control/Panels/PanelContainerLevelUp/MarginContainer/VBoxContainer/UpgradeOptions")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -150,43 +150,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelUp" type="Control" parent="Control/Panels"]
-process_mode = 2
-z_index = 1
-anchors_preset = 0
-offset_left = 1200.0
-offset_top = 150.0
-offset_right = 1400.0
-offset_bottom = 400.00006
+[node name="PanelContainerLevelUp" type="PanelContainer" parent="Control/Panels"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -141.0
+offset_bottom = 141.0
+grow_horizontal = 0
+grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/Panels/LevelUp"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 292.0
-offset_bottom = 286.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/LevelUp/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/PanelContainerLevelUp"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/LevelUp/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/PanelContainerLevelUp/MarginContainer"]
 layout_mode = 2
 
-[node name="LblLevelUp" type="Label" parent="Control/Panels/LevelUp/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LblLevelUp" type="Label" parent="Control/Panels/PanelContainerLevelUp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "LEVEL UP!"
 horizontal_alignment = 1
 
-[node name="UpgradeOptions" type="VBoxContainer" parent="Control/Panels/LevelUp/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="UpgradeOptions" type="VBoxContainer" parent="Control/Panels/PanelContainerLevelUp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SndLevelUp" type="AudioStreamPlayer" parent="Control/Panels/LevelUp/PanelContainer"]
+[node name="SndLevelUp" type="AudioStreamPlayer" parent="Control/Panels/PanelContainerLevelUp"]
 stream = ExtResource("3_gusqm")
 
 [node name="DeathPanel" type="Panel" parent="Control/Panels"]
