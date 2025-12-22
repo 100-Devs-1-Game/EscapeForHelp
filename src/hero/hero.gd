@@ -56,7 +56,7 @@ func _input(event: InputEvent) -> void:
 # -------------------
 # MAIN MOVEMENT LOOP
 # -------------------
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var horizontal_input: float = get_horizontal_movement()
 
 	velocity = Vector3(horizontal_input, 0, -1)
