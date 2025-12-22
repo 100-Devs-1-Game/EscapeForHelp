@@ -20,6 +20,14 @@ config/icon="res://icon.svg"
 
 Global="*res://autoload/global.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Escape For Help"
